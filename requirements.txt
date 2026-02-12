@@ -1,0 +1,14 @@
+langchain 
+wikipedia 
+langchain-community 
+langchain-openai
+langchain-anthropic
+python-dotenv
+pydantic
+ddgs
+langgraph
+typing-extensions
+yfinance
+pandas
+numpy
+duckduckgo-search
