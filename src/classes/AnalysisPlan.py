@@ -43,8 +43,26 @@ class Metric(str, Enum):
 
 
 class Universe(BaseModel):
-    assets: List[str] = Field(min_length=1)
-    benchmark: Optional[str] = None
+    assets: List[str] = Field(
+        min_length=1,
+        description="List of financial asset tickers",
+        examples=["AAPL", "MSFT"],
+        json_schema_extra={
+            "semantic_type": "ticker",
+            "domain": "financial_markets",
+            "source": "yahoo_finance"
+        }
+    )
+
+    benchmark: Optional[str] = Field(
+        default=None,
+        description="Benchmark ticker symbol",
+        examples=["SPY", "^GSPC"],
+        json_schema_extra={
+            "semantic_type": "ticker",
+            "role": "benchmark"
+        }
+    )
 
     @model_validator(mode="before")
     def normalize_symbols(cls, v):

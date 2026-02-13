@@ -44,5 +44,6 @@ def context_research_node(state: MarketAnalysisState) -> dict:
         )
 
     return {
-        "external_context": new_entries
+        "external_context": new_entries,
+         "progress": ["Search data collection completed"]
     }

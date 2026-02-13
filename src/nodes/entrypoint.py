@@ -9,5 +9,6 @@ def initialize_state(user_prompt: str) -> dict:
     """
 
     return {
-        "user_prompt": user_prompt
+        "user_prompt": user_prompt,
+        "progress": ["Workflow started"]
     }

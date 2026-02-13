@@ -23,18 +23,18 @@ def build_graph():
     graph.add_node("report", report_generation_node)
 
     # Join node as synchronization barrier
-    graph.add_node("join", lambda state: {})
+    graph.add_node("join", lambda state: { "progress": ["Data is ready for analysis"]})
 
     graph.set_entry_point("planner")
 
     graph.add_edge("planner", "data")
+    graph.add_edge("data", "cleaning")
     graph.add_edge("planner", "context")
 
-    graph.add_edge("data", "join")
+    graph.add_edge("cleaning", "join")
     graph.add_edge("context", "join")
-    graph.add_edge("join", "cleaning")
 
-    graph.add_edge("cleaning", "analysis")
+    graph.add_edge("join", "analysis")
     graph.add_edge("analysis", "report")
     graph.add_edge("report", END)
 

@@ -31,5 +31,6 @@ def market_data_collection_node(state: MarketAnalysisState) -> dict:
     )
 
     return {
-        "raw_market_data": raw_data
+        "raw_market_data": raw_data,
+        "progress": ["Finance data collection completed"]
     }

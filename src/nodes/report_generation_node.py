@@ -55,5 +55,6 @@ Generate a well-structured report with:
     report: ResearchReport = report_llm.invoke(prompt)
 
     return {
-        "final_report": report
+        "final_report": report.model_dump(),
+        "progress": ["Report generation completed"]
     }

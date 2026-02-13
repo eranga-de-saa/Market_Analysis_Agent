@@ -70,5 +70,6 @@ def data_cleaning_node(state: MarketAnalysisState) -> dict:
         cleaned[symbol] = cleaned[symbol].loc[common_index]
 
     return {
-        "cleaned_market_data": cleaned
+        "cleaned_market_data": cleaned,
+        "progress": ["Data preprocessing completed"]
     }

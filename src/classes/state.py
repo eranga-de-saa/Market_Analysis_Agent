@@ -4,6 +4,8 @@ from typing_extensions import TypedDict
 import os
 from dotenv import load_dotenv
 from .AnalysisPlan import AnalysisPlan
+from typing_extensions import Annotated
+from langgraph.graph.message import add_messages
 
 
 load_dotenv()
@@ -36,3 +38,5 @@ class MarketAnalysisState(TypedDict):
     # Outputs
     final_report: Optional[Dict[str, Any]]
     pdf_path: Optional[str]
+
+    progress: Annotated[List[str], add_messages]

@@ -34,5 +34,6 @@ def analysis_planner_node(state: MarketAnalysisState) -> dict:
 
     return {
         **state,
-        "analysis_plan": plan
+        "analysis_plan": plan,
+        "progress": ["Planning completed"]
     }
