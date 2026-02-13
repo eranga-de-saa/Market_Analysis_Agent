@@ -2,11 +2,25 @@ from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from src.build_graph import build_graph
 from src.nodes.entrypoint import initialize_state
+from fastapi_mcp import FastApiMCP
 import json
 
 app = FastAPI()
 
-@app.post("/run")
+# MCP-safe
+@app.post("/mcp/run", operation_id="run_workflow")
+async def run_mcp(prompt: str):
+    workflow = build_graph()
+    state = initialize_state(prompt)
+    final_state = workflow.invoke(state)
+    return {
+        "metrics": final_state.get("computed_metrics"),
+        "topic": final_state["analysis_plan"].topic,
+        "report": final_state["final_report"]
+    }
+
+
+@app.post("/run/stream", operation_id="stream_workflow")
 async def run(prompt: str):
 
     workflow = build_graph()
@@ -42,3 +56,15 @@ async def run(prompt: str):
         event_stream(),
         media_type="text/event-stream"
     )
+
+
+
+if __name__ == "__main__":
+    import uvicorn
+    # Create an MCP server based on this app
+    mcp = FastApiMCP(app, include_operations=['stream_workflow', 'run_workflow'])
+
+    # Mount the MCP server directly to your app
+    mcp.mount_http()  
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
