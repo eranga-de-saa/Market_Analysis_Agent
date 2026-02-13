@@ -1,6 +1,6 @@
 # nodes/report_generation.py
-from classes.state import MarketAnalysisState
-from classes.report_schema import ResearchReport
+from ..classes.state import MarketAnalysisState
+from ..classes.report_schema import ResearchReport
 
 from langchain_openai import ChatOpenAI
 

@@ -1,7 +1,7 @@
 # nodes/statistical_analysis.py
 
-from classes.state import MarketAnalysisState
-from tools.compute_market_metrics import compute_market_metrics
+from ..classes.state import MarketAnalysisState
+from ..tools.compute_market_metrics import compute_market_metrics
 
 
 def statistical_analysis_node(state: MarketAnalysisState) -> dict:

@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Optional
 from typing_extensions import TypedDict
 import os
 from dotenv import load_dotenv
-from classes.AnalysisPlan import AnalysisPlan
+from .AnalysisPlan import AnalysisPlan
 
 
 load_dotenv()

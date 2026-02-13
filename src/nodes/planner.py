@@ -1,8 +1,8 @@
 from typing import List, Literal, Optional, TypedDict
 from pydantic import BaseModel
 from langchain_openai import ChatOpenAI
-from classes.AnalysisPlan import AnalysisPlan
-from classes.state import MarketAnalysisState
+from ..classes.AnalysisPlan import AnalysisPlan
+from ..classes.state import MarketAnalysisState
 
 # ------------------------
 # 1. LLM INITIALIZATION

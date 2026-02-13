@@ -1,7 +1,7 @@
 # utils/time.py.  This will evolve later. For now, it is enough.
 from datetime import datetime, timedelta
 from typing import Tuple
-from classes.AnalysisPlan import TimeWindow
+from ..classes.AnalysisPlan import TimeWindow
 # from analysis_plan import TimeWindow  # wherever your model lives
 
 

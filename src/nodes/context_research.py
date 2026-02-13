@@ -1,10 +1,10 @@
 # nodes/context_research.py
-from classes.state import MarketAnalysisState
-from tools.context_research import (
+from ..classes.state import MarketAnalysisState
+from ..tools.context_research import (
     generate_symbol_topic,
     research_market_context_for_symbol
 )
-from utils.time import format_time_window_for_context
+from ..utils.time import format_time_window_for_context
 
 
 def context_research_node(state: MarketAnalysisState) -> dict:

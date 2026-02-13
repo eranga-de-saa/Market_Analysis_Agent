@@ -1,12 +1,12 @@
 from langgraph.graph import StateGraph, END
 
-from classes.state import MarketAnalysisState
-from nodes.context_research import context_research_node
-from nodes.data_cleaning import data_cleaning_node
-from nodes.market_data_collection import market_data_collection_node
-from nodes.report_generation_node import report_generation_node
-from nodes.statistical_analysis import statistical_analysis_node
-from nodes.planner import analysis_planner_node
+from src.classes.state import MarketAnalysisState
+from src.nodes.context_research import context_research_node
+from src.nodes.data_cleaning import data_cleaning_node
+from src.nodes.market_data_collection import market_data_collection_node
+from src.nodes.report_generation_node import report_generation_node
+from src.nodes.statistical_analysis import statistical_analysis_node
+from src.nodes.planner import analysis_planner_node
 
 
 def build_graph():

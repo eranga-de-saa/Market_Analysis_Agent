@@ -1,7 +1,7 @@
 # nodes/data_cleaning.py
 from typing import Dict
 import pandas as pd
-from classes.state import MarketAnalysisState
+from ..classes.state import MarketAnalysisState
 
 def data_cleaning_node(state: MarketAnalysisState) -> dict:
     """

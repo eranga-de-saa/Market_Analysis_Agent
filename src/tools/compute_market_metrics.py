@@ -1,8 +1,8 @@
 #tools/compute_market_metrics.py
 from typing import Dict, Any, List, Optional
 import pandas as pd
-from classes.AnalysisPlan import Metric
-from tools.market_metrics import METRIC_FUNCTIONS, compute_rolling_correlation, compute_beta # Assume this is defined elsewhere with the appropriate mapping of Metric to functions
+from ..classes.AnalysisPlan import Metric
+from ..tools.market_metrics import METRIC_FUNCTIONS, compute_rolling_correlation, compute_beta # Assume this is defined elsewhere with the appropriate mapping of Metric to functions
 # Metric and metric functions are defined elsewhere in the notebook (Metric, METRIC_FUNCTIONS, compute_rolling_correlation, compute_beta)
 
 def compute_market_metrics(

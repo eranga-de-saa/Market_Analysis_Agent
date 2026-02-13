@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 from typing import Dict, Any
-from classes.AnalysisPlan import Metric
+from ..classes.AnalysisPlan import Metric
 # from analysis_plan import Metric
 
 TRADING_DAYS = 252

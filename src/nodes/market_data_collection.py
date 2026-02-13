@@ -1,9 +1,9 @@
 #nodes/market_data_collection.py
 # 
 
-from classes.state import MarketAnalysisState
-from tools.market_data import fetch_market_data
-from utils.time import resolve_time_window
+from ..classes.state import MarketAnalysisState
+from ..tools.market_data import fetch_market_data
+from ..utils.time import resolve_time_window
 
 
 def market_data_collection_node(state: MarketAnalysisState) -> dict:
