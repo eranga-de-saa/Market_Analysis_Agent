@@ -3,6 +3,8 @@ from ..classes.state import MarketAnalysisState
 from ..classes.report_schema import ResearchReport
 
 from langchain_openai import ChatOpenAI
+from langsmith import traceable
+
 
 llm = ChatOpenAI(
     model="gpt-5-nano",
@@ -12,7 +14,7 @@ llm = ChatOpenAI(
 report_llm = llm.with_structured_output(ResearchReport)
 
 
-
+@traceable(run_type="llm")
 def report_generation_node(state: MarketAnalysisState) -> dict:
     """
     Generate a comprehensive research report from computed metrics

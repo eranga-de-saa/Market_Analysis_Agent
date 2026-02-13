@@ -5,8 +5,9 @@ from ..tools.context_research import (
     research_market_context_for_symbol
 )
 from ..utils.time import format_time_window_for_context
+from langsmith import traceable
 
-
+@traceable()
 def context_research_node(state: MarketAnalysisState) -> dict:
     """
     Collects qualitative market context per symbol

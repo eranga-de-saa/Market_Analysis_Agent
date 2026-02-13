@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from langchain_openai import ChatOpenAI
 from ..classes.AnalysisPlan import AnalysisPlan
 from ..classes.state import MarketAnalysisState
+from langsmith import traceable
 
 # ------------------------
 # 1. LLM INITIALIZATION
@@ -21,6 +22,7 @@ planner_llm = llm.with_structured_output(AnalysisPlan)
 # ------------------------
 # 5. PLANNER NODE
 # ------------------------
+@traceable(run_type="llm")
 def analysis_planner_node(state: MarketAnalysisState) -> dict:
     plan = planner_llm.invoke(
         f"""

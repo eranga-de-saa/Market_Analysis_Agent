@@ -1,6 +1,7 @@
 # tools/context_research.py
 from ddgs import DDGS
 from langchain_openai import ChatOpenAI
+from langsmith import traceable
 
 
 llm = ChatOpenAI(
@@ -8,7 +9,7 @@ llm = ChatOpenAI(
     temperature=0
 )
 
-
+@traceable(run_type="llm")
 def generate_symbol_topic(
     global_topic: str,
     symbol: str,
@@ -35,7 +36,7 @@ def generate_symbol_topic(
 
     return response.content.strip()
 
-
+@traceable(run_type="llm")
 def research_market_context_for_symbol(
     topic: str,
     symbol: str,

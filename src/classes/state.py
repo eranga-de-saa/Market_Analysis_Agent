@@ -2,13 +2,10 @@
 from typing import Any, Dict, List, Optional
 from typing_extensions import TypedDict
 import os
-from dotenv import load_dotenv
 from .AnalysisPlan import AnalysisPlan
 from typing_extensions import Annotated
 from langgraph.graph.message import add_messages
 
-
-load_dotenv()
 
 
 class MarketAnalysisState(TypedDict):
