@@ -10,8 +10,12 @@ import json
 
 app = FastAPI()
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 # MCP-safe
-@app.post("/mcp/run", operation_id="run_workflow")
+@app.post("/run/step", operation_id="run_workflow")
 async def run_mcp(prompt: str):
     workflow = build_graph()
     state = initialize_state(prompt)
@@ -60,14 +64,19 @@ async def run(prompt: str):
         media_type="text/event-stream"
     )
 
+# MCP mounted at import time
+mcp = FastApiMCP(app, include_operations=['stream_workflow', 'run_workflow'])
+
+# Mount the MCP server directly to your app
+mcp.mount_http()  
+
 
 
 if __name__ == "__main__":
     import uvicorn
-    # Create an MCP server based on this app
-    mcp = FastApiMCP(app, include_operations=['stream_workflow', 'run_workflow'])
-
-    # Mount the MCP server directly to your app
-    mcp.mount_http()  
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True)
 

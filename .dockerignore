@@ -1,0 +1,17 @@
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+
+# Notebooks
+*.ipynb
+src.ipynb
+
+# Git
+.git
+.gitignore
+
+# Env files
+.env
