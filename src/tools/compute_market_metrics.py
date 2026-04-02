@@ -27,18 +27,18 @@ def compute_market_metrics(
     if Metric.ROLLING_CORRELATION in metrics:
         results["rolling_correlation"] = compute_rolling_correlation(cleaned_data)
 
-    if Metric.BETA in metrics:
-        if benchmark is None:
-            raise ValueError("Benchmark required for beta")
+    # if Metric.BETA in metrics:
+    #     if benchmark is None:
+    #         raise ValueError("Benchmark required for beta")
 
-        for symbol in cleaned_data:
-            if symbol == benchmark:
-                continue
+    #     for symbol in cleaned_data:
+    #         if symbol == benchmark:
+    #             continue
 
-            results[symbol]["beta"] = compute_beta(
-                cleaned_data[symbol],
-                cleaned_data[benchmark]
-            )
+    #         results[symbol]["beta"] = compute_beta(
+    #             cleaned_data[symbol],
+    #             cleaned_data[benchmark]
+    #         )
 
     return results
 

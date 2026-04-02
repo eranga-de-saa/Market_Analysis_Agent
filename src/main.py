@@ -8,6 +8,7 @@ import json
 import redis.asyncio as redis
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
+from src.classes.RunRequest import RunRequest
 from fastapi_mcp import FastApiMCP                       
 
 from src.kafka_client import get_producer, enqueue_job, run_consumer, REDIS_URL

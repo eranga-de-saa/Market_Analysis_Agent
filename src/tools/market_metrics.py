@@ -58,10 +58,11 @@ def compute_realized_volatility(df: pd.DataFrame) -> Dict[str, Any]:
 
 def compute_rolling_volatility(df: pd.DataFrame, window: int = 30) -> Dict[str, Any]:
     rv = np.sqrt(TRADING_DAYS) * df["returns"].rolling(window).std()
+    clean = rv.dropna().reset_index().to_dict(orient="records")
     return {
-        "value": rv.dropna().to_dict(),
+        "value": clean,
         "window": window,
-        "sample_size": len(rv.dropna())
+        "sample_size": len(clean)
     }
 
 def compute_rolling_correlation(
@@ -77,12 +78,13 @@ def compute_rolling_correlation(
     r2 = data[s2]["returns"]
 
     corr = r1.rolling(window).corr(r2)
-
+    clean = corr.dropna().reset_index().to_dict(orient="records")
+    
     return {
         "pair": [s1, s2],
-        "value": corr.dropna().to_dict(),
+        "value": clean,
         "window": window,
-        "sample_size": len(corr.dropna())
+        "sample_size": len(clean)
     }
 
 
@@ -128,9 +130,11 @@ def compute_regime_switching(df: pd.DataFrame) -> Dict[str, Any]:
     vol = df["returns"].rolling(30).std()
     regimes = (vol > vol.median()).astype(int)
 
+    clean = regimes.dropna().reset_index().to_dict(orient="records")
+
     return {
-        "regimes": regimes.dropna().to_dict(),
-        "sample_size": len(regimes.dropna())
+        "regimes": clean,
+        "sample_size": len(clean)
     }
 
 METRIC_FUNCTIONS = {
