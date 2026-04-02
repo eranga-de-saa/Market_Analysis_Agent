@@ -67,7 +67,6 @@ async def run_consumer():
                 final_state = workflow.invoke(state)
 
                 result = {
-                    "metrics": final_state.get("computed_metrics"),
                     "topic": final_state["analysis_plan"].topic,
                     "report": final_state["final_report"],
                 }

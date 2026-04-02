@@ -35,8 +35,8 @@ def health():
 
 
 @app.post("/run/step", operation_id="run_workflow")       
-async def run_mcp(prompt: str):
-    job_id = await enqueue_job(producer, prompt)
+async def run_mcp(request: RunRequest):
+    job_id = await enqueue_job(producer, request.prompt)
     rdb = redis.from_url(REDIS_URL, decode_responses=True)
     try:
         for _ in range(300):
@@ -74,8 +74,8 @@ async def job_status(job_id: str):
 
 
 @app.post("/run/stream", operation_id="stream_workflow") 
-async def run_stream(prompt: str):
-    job_id = await enqueue_job(producer, prompt)
+async def run_stream(request: RunRequest):
+    job_id = await enqueue_job(producer, request.prompt)
     rdb = redis.from_url(REDIS_URL, decode_responses=True)
 
     async def event_stream():

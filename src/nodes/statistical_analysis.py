@@ -25,6 +25,6 @@ def statistical_analysis_node(state: MarketAnalysisState) -> dict:
     results = make_json_safe(results)
 
     return {
-        "computed_metrics": results.to_dict(),
+        "computed_metrics": results,
          "progress": ["Data anlysis completed"]
     }
