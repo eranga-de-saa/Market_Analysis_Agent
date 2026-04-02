@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from src.build_graph import build_graph
 from src.nodes.entrypoint import initialize_state
+from src.classes.RunRequest import RunRequest
 from fastapi_mcp import FastApiMCP
 import json
 
@@ -16,20 +17,20 @@ def health():
 
 # MCP-safe
 @app.post("/run/step", operation_id="run_workflow")
-async def run_mcp(prompt: str):
+async def run_mcp(request: RunRequest):
+    prompt = request.prompt
     workflow = build_graph()
     state = initialize_state(prompt)
     final_state = workflow.invoke(state)
     return {
-        "metrics": final_state.get("computed_metrics"),
         "topic": final_state["analysis_plan"].topic,
         "report": final_state["final_report"]
     }
 
 
 @app.post("/run/stream", operation_id="stream_workflow")
-async def run(prompt: str):
-
+async def run(prequest: RunRequest):
+    prompt = prequest.prompt
     workflow = build_graph()
     state = initialize_state(prompt)
     seen_progress = set()

@@ -2,6 +2,7 @@
 
 from ..classes.state import MarketAnalysisState
 from ..tools.compute_market_metrics import compute_market_metrics
+from ..utils.helper import make_json_safe
 
 
 def statistical_analysis_node(state: MarketAnalysisState) -> dict:
@@ -20,6 +21,8 @@ def statistical_analysis_node(state: MarketAnalysisState) -> dict:
         metrics=plan.metrics,
         benchmark=plan.universe.benchmark
     )
+
+    results = make_json_safe(results)
 
     return {
         "computed_metrics": results,
