@@ -20,8 +20,15 @@ def market_data_collection_node(state: MarketAnalysisState) -> dict:
     # Resolve structured time window
     start_date, end_date = resolve_time_window(plan.time_window)
 
-    # Extract assets only (benchmarks handled separately later)
+    # Combine both assets and benchmarks into one list for download
     symbols = plan.universe.assets
+    
+    # # Optional safety check just in case you ever pass a single string instead of a list:
+    # if isinstance(symbols, str):
+    #     symbols = [symbols]
+
+    # # Extract assets only (benchmarks handled separately later)
+    # symbols = plan.universe.assets
 
     raw_data = fetch_market_data(
         symbols=symbols,

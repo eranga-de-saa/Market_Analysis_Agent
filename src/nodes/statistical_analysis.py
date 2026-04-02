@@ -22,6 +22,6 @@ def statistical_analysis_node(state: MarketAnalysisState) -> dict:
     )
 
     return {
-        "computed_metrics": results,
+        "computed_metrics": results.to_dict(),
          "progress": ["Data anlysis completed"]
     }

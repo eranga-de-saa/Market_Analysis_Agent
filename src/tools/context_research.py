@@ -1,3 +1,9 @@
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
+import os
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY") 
+
 # tools/context_research.py
 from ddgs import DDGS
 from langchain_openai import ChatOpenAI
@@ -6,7 +12,8 @@ from langsmith import traceable
 
 llm = ChatOpenAI(
     model="gpt-5-nano",
-    temperature=0
+    temperature=0,
+    api_key = OPENAI_API_KEY
 )
 
 @traceable(run_type="llm")

@@ -1,5 +1,6 @@
 aiohappyeyeballs==2.6.1
 aiohttp==3.13.3
+aiokafka==0.13.0
 aiosignal==1.4.0
 annotated-doc==0.0.4
 annotated-types==0.7.0
@@ -114,6 +115,7 @@ python-multipart==0.0.20
 pytz==2025.2
 PyYAML==6.0.3
 pyzmq==27.1.0
+redis==7.4.0
 referencing==0.37.0
 regex==2026.1.15
 requests==2.32.5
@@ -145,6 +147,7 @@ typing-inspection==0.4.2
 typing_extensions==4.15.0
 tzdata==2025.3
 urllib3==2.6.3
+uuid==1.30
 uuid_utils==0.14.0
 uvicorn==0.39.0
 uvloop==0.22.1

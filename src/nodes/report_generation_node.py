@@ -1,3 +1,9 @@
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
+import os
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY") 
+
 # nodes/report_generation.py
 from ..classes.state import MarketAnalysisState
 from ..classes.report_schema import ResearchReport
@@ -8,7 +14,8 @@ from langsmith import traceable
 
 llm = ChatOpenAI(
     model="gpt-5-nano",
-    temperature=0
+    temperature=0,
+    api_key = OPENAI_API_KEY
 )
 
 report_llm = llm.with_structured_output(ResearchReport)
